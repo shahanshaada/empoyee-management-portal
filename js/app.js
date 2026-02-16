@@ -142,18 +142,32 @@ setupFilters() {
   });
 
   // Save employee
-  document.getElementById("saveEmployee").addEventListener("click", () => {
-    this.dataService.add({
-      name: empName.value,
-      email: empEmail.value,
-      role: empRole.value,
-      department: empDept.value
-    });
+document.getElementById("saveEmployee").addEventListener("click", () => {
+  // Get values
+  const name = empName.value.trim();
+  const email = empEmail.value.trim();
+  const role = empRole.value.trim();
+  const department = empDept.value;
 
-    modal.classList.add("hidden");
-    resetModal();   
-    this.render();   
-  });
+  //Simple Validation
+  if (!name || !email || !role || !department) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  this.dataService.add({ name, email, role, department });
+
+  modal.classList.add("hidden");
+  resetModal();
+  this.render();
+});
+
 
   document.getElementById("exportCSV").addEventListener("click", () =>
     exportCSV(this.collection.employees)
