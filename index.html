@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <h1>Employee Management System</h1>
+
+    <div class="toolbar">
+      <button id="addEmployeeBtn">Add Employee</button>
+      <button id="exportCSV">Export CSV</button>
+      <button id="exportJSON">Export JSON</button>
+    </div>
+
+    <div class="controls">
+      <div id="searchContainer"></div>
+      <div id="filterContainer"></div>
+    </div>
+
+    <div id="tableContainer"></div>
+    <div id="paginationContainer"></div>
+
+    <div id="employeeModal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Add Employee</h3>
+        <input id="empName" placeholder="Name" />
+        <input id="empEmail" placeholder="Email" />
+        <input id="empRole" placeholder="Role" />
+        <select id="empDept">
+          <option value="" disabled selected>Select Department</option>
+        </select>
+        <button id="saveEmployee">Save</button>
+        <button id="closeModal">Cancel</button>
+      </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
