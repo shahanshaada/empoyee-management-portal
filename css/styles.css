@@ -15,12 +15,14 @@ h1 {
   margin-bottom: 20px;
   font-weight: 600;
   color: #222;
+  font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
 .toolbar {
   display: flex;
   gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 button {
@@ -30,6 +32,7 @@ button {
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
+  font-size: 14px;
 }
 
 button:hover {
@@ -55,11 +58,18 @@ button:hover {
   flex-wrap: wrap;
 }
 
+#searchContainer {
+  flex: 1;
+  min-width: 200px;
+}
+
 #searchContainer input {
   padding: 6px 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  min-width: 200px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 14px;
 }
 
 .multi-select-dropdown {
@@ -67,6 +77,7 @@ button:hover {
   width: 250px;
   user-select: none;
   z-index: 11;
+  min-width: 200px;
 }
 
 .select-box {
@@ -78,16 +89,16 @@ button:hover {
   border-radius: 4px;
   background-color: #fff;
   cursor: pointer;
-  min-width: 250px;
-  max-width: 300px;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
-
 
 .select-box .arrow {
   margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .options-container {
@@ -109,6 +120,7 @@ button:hover {
   display: block;
   padding: 4px 6px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .options-container label:hover {
@@ -119,7 +131,6 @@ button:hover {
   display: none;
 }
 
-
 /* table */
 .table-wrapper {
   background: white;
@@ -127,11 +138,13 @@ button:hover {
   overflow: auto;
   max-height: 500px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 800px;
 }
 
 thead {
@@ -151,6 +164,7 @@ th {
   font-weight: 600;
   color: #555;
   border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
 }
 
 td {
@@ -166,6 +180,7 @@ tbody tr:hover {
   color: white;
   font-size: 13px;
   padding: 5px 10px;
+  white-space: nowrap;
 }
 
 .deleteBtn:hover {
@@ -177,11 +192,13 @@ tbody tr:hover {
   margin-top: 20px;
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 #paginationContainer button {
   background: white;
   border: 1px solid #ddd;
+  min-width: 40px;
 }
 
 #paginationContainer button.active {
@@ -198,18 +215,23 @@ tbody tr:hover {
   justify-content: center;
   align-items: center;
   z-index: 12;
+  padding: 20px;
 }
 
 .modal-content {
   background: white;
   padding: 25px;
   border-radius: 10px;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-content h3 {
   margin-bottom: 15px;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
 }
 
 .modal-content input {
@@ -218,6 +240,7 @@ tbody tr:hover {
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 .modal-content button {
@@ -244,7 +267,175 @@ tbody tr:hover {
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
 }
 
-
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    margin-bottom: 15px;
+  }
+
+  .toolbar {
+    gap: 8px;
+  }
+
+  button {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .controls {
+    gap: 10px;
+  }
+
+  #searchContainer {
+    width: 100%;
+  }
+
+  #searchContainer input {
+    max-width: 100%;
+  }
+
+  .multi-select-dropdown {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .select-box {
+    font-size: 13px;
+  }
+
+  table {
+    min-width: 600px;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .table-wrapper {
+    max-height: 400px;
+  }
+
+  .deleteBtn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  #paginationContainer button {
+    min-width: 36px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .modal-content h3 {
+    margin-bottom: 12px;
+  }
+
+  .modal-content input,
+  .modal-content select {
+    padding: 7px 9px;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .toolbar {
+    gap: 6px;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  #exportCSV,
+  #exportJSON {
+    flex: 1;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  table {
+    min-width: 500px;
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .table-wrapper {
+    max-height: 350px;
+    border-radius: 6px;
+  }
+
+  .deleteBtn {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  #paginationContainer {
+    gap: 4px;
+    margin-top: 15px;
+  }
+
+  #paginationContainer button {
+    min-width: 32px;
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .modal-content input,
+  .modal-content select {
+    padding: 6px 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .modal-content button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+
